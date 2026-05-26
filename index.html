@@ -899,7 +899,7 @@
 
 <script>
   window.addEventListener('load', function() {
-    fetch('https://jamesmoon.goatcounter.com/counter/%2F.json')
+    fetch('https://jamesmoon.goatcounter.com/counter/TOTAL.json')
       .then(r => r.json())
       .then(d => {
         document.getElementById('gc-visits').textContent = d.count;
