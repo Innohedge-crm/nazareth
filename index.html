@@ -902,7 +902,7 @@ function updateCount() {
     fetch('https://jamesmoon.goatcounter.com/counter/TOTAL.json?t=' + Date.now())
       .then(r => r.json())
       .then(d => {
-        document.getElementById('gc-visits').textContent = d.count;
+        document.getElementById('gc-visits').textContent = d.count_unique;
       })
       .catch(e => console.log('counter error:', e));
   }
