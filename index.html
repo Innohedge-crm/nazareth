@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>평안 CCC 나사렛 공동체</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #12121a;
+    --bg3: #1a1a26;
+    --card: #16161f;
+    --accent: #7c6af7;
+    --accent2: #f76a8a;
+    --accent3: #6af7c8;
+    --text: #f0f0f8;
+    --muted: #8888aa;
+    --border: rgba(124,106,247,0.2);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 0.85rem;
+    font-weight: 500; letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: none; color: #fff; padding: 8px 20px;
+    border-radius: 100px; font-size: 0.8rem; font-weight: 700;
+    cursor: pointer; font-family: 'Noto Sans KR', sans-serif;
+    letter-spacing: 0.5px; transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+  .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .hamburger span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 6rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-glow {
+    position: absolute; width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,106,247,0.15) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute; width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(247,106,138,0.1) 0%, transparent 70%);
+    top: 30%; right: 10%;
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(124,106,247,0.15); border: 1px solid var(--border);
+    padding: 6px 16px; border-radius: 100px;
+    font-size: 0.75rem; color: var(--accent); font-weight: 500;
+    margin-bottom: 1.5rem; letter-spacing: 1px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-badge::before { content: '✦'; font-size: 0.6rem; }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-title .line1 { color: var(--text); }
+  .hero-title .line2 {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-title .line3 { color: var(--text); }
+  .hero-sub {
+    margin-top: 1.5rem; font-size: 1rem; color: var(--muted); font-weight: 300;
+    max-width: 500px; animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+  .hero-buttons {
+    display: flex; gap: 12px; margin-top: 2.5rem; flex-wrap: wrap; justify-content: center;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; border: none; padding: 14px 32px; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif; letter-spacing: 0.5px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border); padding: 14px 32px; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 500; cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif; letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── STATS ── */
+  .stats-bar {
+    display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    margin-top: 4rem; animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 4px; letter-spacing: 0.5px; }
+
+  /* ── SECTION ── */
+  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900;
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+  .section-sub { color: var(--muted); font-size: 0.95rem; max-width: 560px; }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  .about-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 2rem;
+    transition: transform 0.3s, border-color 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .about-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .about-card:hover { transform: translateY(-4px); border-color: rgba(124,106,247,0.4); }
+  .about-card:hover::before { opacity: 1; }
+  .about-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .about-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .about-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.7; }
+
+  /* ── COMMUNITY LINKS ── */
+  #links { background: var(--bg2); }
+  #links > section { max-width: 1100px; }
+  .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 3rem; }
+  .link-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.5rem;
+    text-decoration: none; color: var(--text);
+    display: flex; flex-direction: column; align-items: flex-start; gap: 12px;
+    transition: all 0.3s; cursor: pointer;
+  }
+  .link-card:hover { transform: translateY(-4px); border-color: rgba(124,106,247,0.5); }
+  .link-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+  }
+  .link-icon.kakao { background: #FEE500; }
+  .link-icon.band { background: #00C73C; }
+  .link-icon.drive { background: #1a73e8; }
+  .link-icon.youtube { background: #ff0000; }
+  .link-card h3 { font-size: 1rem; font-weight: 700; }
+  .link-card p { font-size: 0.8rem; color: var(--muted); }
+  .link-arrow { margin-top: auto; font-size: 1.2rem; color: var(--accent); }
+
+  /* ── EVENTS ── */
+  .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 3rem; }
+  .event-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .event-card:hover { transform: translateY(-4px); }
+  .event-header {
+    padding: 1.25rem 1.5rem 1rem;
+    display: flex; align-items: flex-start; justify-content: space-between;
+  }
+  .event-season {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+    padding: 4px 10px; border-radius: 100px;
+  }
+  .event-season.summer { background: rgba(247,106,138,0.15); color: var(--accent2); border: 1px solid rgba(247,106,138,0.3); }
+  .event-season.winter { background: rgba(106,247,200,0.15); color: var(--accent3); border: 1px solid rgba(106,247,200,0.3); }
+  .event-season.spring { background: rgba(124,106,247,0.15); color: var(--accent); border: 1px solid rgba(124,106,247,0.3); }
+  .event-season.visit { background: rgba(255,200,80,0.15); color: #ffc850; border: 1px solid rgba(255,200,80,0.3); }
+  .event-emoji { font-size: 1.8rem; }
+  .event-body { padding: 0 1.5rem 1.5rem; }
+  .event-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .event-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+  .event-month {
+    display: inline-block; margin-top: 0.8rem;
+    font-size: 0.7rem; color: var(--muted); letter-spacing: 1px;
+  }
+
+  /* ── ARCHIVE ── */
+  #archive { background: var(--bg2); }
+  .archive-lock {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; padding: 4rem 2rem; text-align: center;
+  }
+  .lock-icon { font-size: 4rem; margin-bottom: 1rem; opacity: 0.5; }
+  .lock-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .lock-sub { font-size: 0.875rem; color: var(--muted); margin-bottom: 2rem; }
+  .pw-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .pw-input {
+    background: var(--bg3); border: 1px solid var(--border);
+    color: var(--text); padding: 12px 20px; border-radius: 100px;
+    font-size: 0.9rem; font-family: 'Noto Sans KR', sans-serif;
+    outline: none; transition: border-color 0.2s; width: 220px;
+    text-align: center; letter-spacing: 3px;
+  }
+  .pw-input:focus { border-color: var(--accent); }
+  .pw-input::placeholder { letter-spacing: 1px; color: var(--muted); }
+  .pw-btn {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; border: none; padding: 12px 28px; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    transition: opacity 0.2s;
+  }
+  .pw-btn:hover { opacity: 0.85; }
+  .pw-error { color: var(--accent2); font-size: 0.8rem; margin-top: 8px; display: none; }
+
+  /* archive content */
+  .archive-content { display: none; }
+  .year-block { margin-bottom: 1.5rem; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .year-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 1.5rem; cursor: pointer;
+    background: var(--card); transition: background 0.2s;
+    user-select: none;
+  }
+  .year-header:hover { background: var(--bg3); }
+  .year-title { display: flex; align-items: center; gap: 12px; }
+  .year-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .year-desc { font-size: 0.8rem; color: var(--muted); }
+  .year-toggle { font-size: 1.2rem; color: var(--accent); transition: transform 0.3s; }
+  .year-toggle.open { transform: rotate(180deg); }
+  .year-items { display: none; border-top: 1px solid var(--border); }
+  .year-items.open { display: block; }
+  .archive-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.2s;
+  }
+  .archive-item:last-child { border-bottom: none; }
+  .archive-item:hover { background: rgba(124,106,247,0.05); }
+  .item-left { display: flex; align-items: center; gap: 12px; }
+  .item-type {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .item-type.doc { background: rgba(124,106,247,0.15); }
+  .item-type.photo { background: rgba(247,106,138,0.15); }
+  .item-type.meeting { background: rgba(106,247,200,0.15); }
+  .item-name { font-size: 0.9rem; font-weight: 500; }
+  .item-date { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+  .item-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(124,106,247,0.15); color: var(--accent);
+    border: 1px solid rgba(124,106,247,0.3); padding: 6px 14px;
+    border-radius: 100px; font-size: 0.75rem; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .item-link:hover { background: rgba(124,106,247,0.3); }
+
+  /* ── OFFICERS ── */
+  .officers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 3rem; }
+  .officer-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.5rem 1rem;
+    text-align: center; transition: all 0.3s;
+  }
+  .officer-card:hover { border-color: rgba(124,106,247,0.4); transform: translateY(-3px); }
+  .officer-avatar {
+    width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, rgba(124,106,247,0.2), rgba(247,106,138,0.2));
+    border: 1px solid var(--border);
+  }
+  .officer-role { font-size: 0.7rem; color: var(--accent); font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+  .officer-name { font-size: 0.9rem; font-weight: 600; }
+
+  /* ── POPUP ── */
+  .popup-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    align-items: center; justify-content: center;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease;
+  }
+  .popup-overlay.show { display: flex; }
+  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+  .popup-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    width: 100%; max-width: 420px;
+    overflow: hidden;
+    position: relative;
+    animation: popUp 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes popUp {
+    from { opacity:0; transform: scale(0.85) translateY(20px); }
+    to   { opacity:1; transform: scale(1) translateY(0); }
+  }
+
+  /* ✏️ 수정 포인트 1: 팝업 이미지 영역 */
+  .popup-image {
+    width: 100%; aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+  }
+  /* 이미지 없을 때 대체 배너 */
+  .popup-banner {
+    width: 100%; aspect-ratio: 4/3;
+    background: linear-gradient(135deg, rgba(124,106,247,0.3), rgba(247,106,138,0.3));
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+    text-align: center; padding: 2rem;
+  }
+  .popup-banner-emoji { font-size: 3.5rem; }
+  .popup-banner-tag {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+    color: var(--accent); text-transform: uppercase;
+  }
+  /* ✏️ 수정 포인트 2: 팝업 제목 */
+  .popup-banner-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem; line-height: 1.1;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  /* ✏️ 수정 포인트 3: 팝업 날짜 */
+  .popup-banner-date {
+    font-size: 0.85rem; color: var(--muted);
+  }
+
+  .popup-body { padding: 1.5rem; }
+  /* ✏️ 수정 포인트 4: 팝업 본문 제목 */
+  .popup-title {
+    font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem;
+  }
+  /* ✏️ 수정 포인트 5: 팝업 본문 설명 */
+  .popup-desc {
+    font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem;
+  }
+  .popup-actions { display: flex; gap: 8px; align-items: center; }
+  /* ✏️ 수정 포인트 6: 팝업 버튼 텍스트/링크 */
+  .popup-btn {
+    flex: 1;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; border: none; padding: 12px 20px; border-radius: 100px;
+    font-size: 0.875rem; font-weight: 700; cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif; transition: opacity 0.2s;
+    text-decoration: none; text-align: center; display: block;
+  }
+  .popup-btn:hover { opacity: 0.85; }
+  .popup-close-text {
+    font-size: 0.75rem; color: var(--muted); cursor: pointer;
+    white-space: nowrap; padding: 4px 8px;
+    transition: color 0.2s;
+  }
+  .popup-close-text:hover { color: var(--text); }
+  .popup-x {
+    position: absolute; top: 12px; right: 14px;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(0,0,0,0.45); border: none;
+    color: #fff; font-size: 1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; z-index: 10;
+  }
+  .popup-x:hover { background: rgba(0,0,0,0.7); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+  }
+  .footer-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.8; }
+  .footer-copy { margin-top: 2rem; font-size: 0.75rem; color: rgba(136,136,170,0.4); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .about-grid { grid-template-columns: 1fr; }
+    .officers-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-bar { gap: 2rem; }
+    .pw-form { flex-direction: column; align-items: center; }
+    .pw-input { width: 100%; max-width: 280px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">평안나사렛 NAZARETH</div>
+  <ul class="nav-links">
+    <li><a href="#home">HOME</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#links">COMMUNITY</a></li>
+    <li><a href="#events">EVENTS</a></li>
+    <li><a href="#archive">ARCHIVE</a></li>
+    <li><a href="#officers">OFFICERS</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('links').scrollIntoView({behavior:'smooth'})">바로가기 →</button>
+  <div class="hamburger" onclick="toggleMenu()" id="ham">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     팝업 설정 — 여기만 수정하면 됩니다!
+     ════════════════════════════════════════ -->
+<div class="popup-overlay show" id="popupOverlay" onclick="closeOnOverlay(event)">
+  <div class="popup-box" id="popupBox">
+    <button class="popup-x" onclick="closePopup()">✕</button>
+
+    <!-- [방식 A] 이미지 팜플렛 사용 시: 아래 div.popup-banner 대신 img 태그로 교체
+         <img class="popup-image" src="팜플렛이미지URL" alt="행사 팜플렛"> -->
+
+    <!-- [방식 B] 텍스트 배너 (기본) -->
+    <div class="popup-banner">
+      <div class="popup-banner-emoji">⛺</div>
+      <div class="popup-banner-tag">✦ 2025 여름 행사 ✦</div>
+      <div class="popup-banner-title">2025 여름<br>수련회</div>
+      <div class="popup-banner-date">📅 2025년 7월 25일 (금) – 27일 (일)<br>📍 장소 미정</div>
+    </div>
+
+    <div class="popup-body">
+      <div class="popup-title">2025 여름수련회 안내</div>
+      <div class="popup-desc">
+        평안 CCC 나사렛 공동체 2025 여름수련회에 함께해요!<br>
+        자세한 일정과 신청은 아래 버튼을 눌러 확인해 주세요. 🙏
+      </div>
+      <div class="popup-actions">
+        <a class="popup-btn" href="#" onclick="alert('신청 링크를 연결하세요'); return false;">자세히 보기 →</a>
+        <span class="popup-close-text" onclick="closeToday()">오늘 하루 안 보기</span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ════════════════════════════════════════ -->
+
+<!-- HERO -->
+<div id="home" style="padding-top:64px;">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-badge">평안 CCC 나사렛 공동체</div>
+  <h1 class="hero-title">
+    <div class="line1">평범한 일상,</div>
+    <div class="line2">다시 예수님을</div>
+    <div class="line3">따른다.</div>
+  </h1>
+  <p class="hero-sub">
+    캠퍼스에서 시작된 믿음이 <strong>삶 전체로</strong> 이어지는 곳.<br>
+    나사렛은 우리가 함께 살아가는 <strong>평생순장의 공동체</strong>입니다.
+  </p>
+  <div class="hero-buttons">
+    <button class="btn-primary" onclick="document.getElementById('links').scrollIntoView({behavior:'smooth'})">💬 카카오톡 참여하기</button>
+    <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">나사렛이란? →</button>
+  </div>
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">전체 나사렛 멤버</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">활성 참여 인원</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4+</div>
+      <div class="stat-label">연간 주요 행사</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">평생순장의 여정</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" style="background: var(--bg);">
+<section>
+  <div class="section-label">ABOUT NAZARETH</div>
+  <h2 class="section-title fade-in">나사렛이란 무엇인가?</h2>
+  <p class="section-sub fade-in">평범한 일상 속에서 예수님을 따라 살아가는 CCC 졸업생들의 공동체입니다.</p>
+  <div class="about-grid">
+    <div class="about-card fade-in">
+      <div class="about-icon">🏘️</div>
+      <h3>나사렛의 의미</h3>
+      <p>나사렛은 화려한 무대가 아니라 평범한 일상 속에서 예수님을 따라 살아가는 삶의 자리입니다. 직장, 가정, 출근길 지하철 — 모든 일상이 신앙의 자리입니다.</p>
+    </div>
+    <div class="about-card fade-in">
+      <div class="about-icon">🎓</div>
+      <h3>평생순장</h3>
+      <p>순장은 졸업해도 끝이 아닙니다. 사람을 사랑으로 품고, 말씀으로 세우며, 삶으로 본을 보이는 제자도의 삶 — 그것이 평생순장입니다.</p>
+    </div>
+    <div class="about-card fade-in">
+      <div class="about-icon">🌊</div>
+      <h3>우리가 계속 모이는 이유</h3>
+      <p>믿음은 혼자 지키기 어렵습니다. 함께 모일 때 하나님이 일하십니다. 나사렛은 지친 믿음을 다시 일으키고, 서로를 하나님께로 돌이키는 은혜의 자리입니다.</p>
+    </div>
+    <div class="about-card fade-in">
+      <div class="about-icon">🔗</div>
+      <h3>캠퍼스와의 연결</h3>
+      <p>캠퍼스는 시작이고, 나사렛은 삶이며, 평생순장은 끝까지 사람을 세우는 제자도의 길입니다. 졸업이 끝이 아닌 새로운 파송의 시작입니다.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- COMMUNITY LINKS -->
+<div id="links" style="background: var(--bg2); padding: 5rem 0;">
+<section style="max-width:1100px;">
+  <div class="section-label">COMMUNITY</div>
+  <h2 class="section-title fade-in">커뮤니티 바로가기</h2>
+  <p class="section-sub fade-in">나사렛의 모든 소통 채널이 여기에 모여 있어요.</p>
+  <div class="links-grid">
+    <a class="link-card fade-in" href="#" onclick="alert('카카오톡 링크를 여기에 연결하세요')">
+      <div class="link-icon kakao">💬</div>
+      <h3>카카오톡 단체방</h3>
+      <p>평안 나사렛 공동체 공식 단톡방</p>
+      <div class="link-arrow">→</div>
+    </a>
+    <a class="link-card fade-in" href="#" onclick="alert('네이버밴드 링크를 여기에 연결하세요')">
+      <div class="link-icon band">🎵</div>
+      <h3>네이버밴드</h3>
+      <p>공지, 사진, 소통 커뮤니티</p>
+      <div class="link-arrow">→</div>
+    </a>
+    <a class="link-card fade-in" href="#" onclick="alert('구글 드라이브 링크를 여기에 연결하세요')">
+      <div class="link-icon drive">📁</div>
+      <h3>공유 폴더</h3>
+      <p>자료, 사진 공유 드라이브</p>
+      <div class="link-arrow">→</div>
+    </a>
+    <a class="link-card fade-in" href="#" onclick="alert('유튜브 또는 추가 링크를 연결하세요')">
+      <div class="link-icon youtube">▶</div>
+      <h3>영상 채널</h3>
+      <p>말씀 및 집회 영상 모음</p>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+</section>
+</div>
+
+<!-- EVENTS -->
+<div id="events" style="background: var(--bg);">
+<section>
+  <div class="section-label">EVENTS</div>
+  <h2 class="section-title fade-in">연간 주요 행사</h2>
+  <p class="section-sub fade-in">함께 모여 믿음을 새롭게 하는 나사렛의 1년 여정입니다.</p>
+  <div class="events-grid">
+    <div class="event-card fade-in">
+      <div class="event-header">
+        <span class="event-season summer">SUMMER</span>
+        <span class="event-emoji">⛺</span>
+      </div>
+      <div class="event-body">
+        <div class="event-title">여름 수련회</div>
+        <div class="event-desc">학부생 여름수련회 격려방문. 후배들과 함께하며 믿음의 도전을 나눕니다.</div>
+        <span class="event-month">📅 7–8월</span>
+      </div>
+    </div>
+    <div class="event-card fade-in">
+      <div class="event-header">
+        <span class="event-season winter">WINTER</span>
+        <span class="event-emoji">🙏</span>
+      </div>
+      <div class="event-body">
+        <div class="event-title">겨울 금식수련회</div>
+        <div class="event-desc">학부생 겨울 금식수련회 격려방문. 기도와 말씀으로 새해를 시작합니다.</div>
+        <span class="event-month">📅 1–2월</span>
+      </div>
+    </div>
+    <div class="event-card fade-in">
+      <div class="event-header">
+        <span class="event-season spring">SPRING MT</span>
+        <span class="event-emoji">🌸</span>
+      </div>
+      <div class="event-body">
+        <div class="event-title">봄 1박2일 MT</div>
+        <div class="event-desc">나사렛 멤버들이 함께 모여 쉬고, 나누고, 서로를 세우는 시간.</div>
+        <span class="event-month">📅 4–5월</span>
+      </div>
+    </div>
+    <div class="event-card fade-in">
+      <div class="event-header">
+        <span class="event-season winter">WINTER MT</span>
+        <span class="event-emoji">❄️</span>
+      </div>
+      <div class="event-body">
+        <div class="event-title">겨울 1박2일 MT</div>
+        <div class="event-desc">한 해를 마무리하며 감사와 비전을 나누는 겨울 모임.</div>
+        <span class="event-month">📅 11–12월</span>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ARCHIVE -->
+<div id="archive" style="background: var(--bg2); padding: 5rem 0;">
+<section style="max-width:1100px;">
+  <div class="section-label">ARCHIVE</div>
+  <h2 class="section-title fade-in">자료실</h2>
+  <p class="section-sub fade-in">멤버 전용 자료실입니다. 비밀번호를 입력하면 접근할 수 있어요.</p>
+
+  <div class="archive-lock" id="archiveLock">
+    <div class="lock-icon">🔒</div>
+    <div class="lock-title">멤버 전용 자료실</div>
+    <div class="lock-sub">나사렛 멤버만 접근 가능합니다.<br>공동체 비밀번호를 입력해 주세요.</div>
+    <div class="pw-form">
+      <input class="pw-input" type="password" id="pwInput" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')checkPw()">
+      <button class="pw-btn" onclick="checkPw()">입장하기 →</button>
+    </div>
+    <div class="pw-error" id="pwError">❌ 비밀번호가 올바르지 않습니다.</div>
+  </div>
+
+  <div class="archive-content" id="archiveContent">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; flex-wrap:wrap; gap:12px;">
+      <p style="color:var(--accent3); font-size:0.85rem;">✅ 자료실 접근 완료 — 나사렛 멤버로 확인되었습니다.</p>
+      <button onclick="lockArchive()" style="background:transparent; border:1px solid var(--border); color:var(--muted); padding:6px 16px; border-radius:100px; font-size:0.75rem; cursor:pointer; font-family:'Noto Sans KR',sans-serif;">🔒 잠금</button>
+    </div>
+
+    <!-- 2025 -->
+    <div class="year-block">
+      <div class="year-header" onclick="toggleYear(this)">
+        <div class="year-title">
+          <span class="year-num">2025</span>
+          <span class="year-desc">진행 중인 해</span>
+        </div>
+        <span class="year-toggle open">▲</span>
+      </div>
+      <div class="year-items open">
+        <div class="archive-item">
+          <div class="item-left">
+            <div class="item-type doc">📄</div>
+            <div>
+              <div class="item-name">2025 봄 MT 자료</div>
+              <div class="item-date">2025년 4월 · 회의자료 + 말씀자료</div>
+            </div>
+          </div>
+          <a class="item-link" href="#" onclick="alert('구글 드라이브 링크를 여기에 연결하세요')">열기 ↗</a>
+        </div>
+        <div class="archive-item">
+          <div class="item-left">
+            <div class="item-type photo">📸</div>
+            <div>
+              <div class="item-name">2025 봄 MT 사진첩</div>
+              <div class="item-date">2025년 4월 · 사진 공유 폴더</div>
+            </div>
+          </div>
+          <a class="item-link" href="#" onclick="alert('사진 폴더 링크를 여기에 연결하세요')">열기 ↗</a>
+        </div>
+        <div class="archive-item">
+          <div class="item-left">
+            <div class="item-type meeting">💬</div>
+            <div>
+              <div class="item-name">2025 임원 회의 자료</div>
+              <div class="item-date">2025년 3월 · 총회 자료</div>
+            </div>
+          </div>
+          <a class="item-link" href="#" onclick="alert('회의자료 링크를 여기에 연결하세요')">열기 ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2024 -->
+    <div class="year-block">
+      <div class="year-header" onclick="toggleYear(this)">
+        <div class="year-title">
+          <span class="year-num">2024</span>
+          <span class="year-desc">4개 행사 완료</span>
+        </div>
+        <span class="year-toggle">▲</span>
+      </div>
+      <div class="year-items">
+        <div class="archive-item">
+          <div class="item-left">
+            <div class="item-type doc">📄</div>
+            <div>
+              <div class="item-name">2024 겨울 MT 자료</div>
+              <div class="item-date">2024년 12월</div>
+            </div>
+          </div>
+          <a class="item-link" href="#" onclick="alert('링크를 연결해주세요')">열기 ↗</a>
+        </div>
+        <div class="archive-item">
+          <div class="item-left">
+            <div class="item-type photo">📸</div>
+            <div>
+              <div class="item-name">2024 겨울 MT 사진첩</div>
+              <div class="item-date">2024년 12월 · 사진 공유 폴더</div>
+            </div>
+          </div>
+          <a class="item-link" href="#" onclick="alert('링크를 연결해주세요')">열기 ↗</a>
+        </div>
+        <div class="archive-item">
+          <div class="item-left">
+            <div class="item-type doc">📄</div>
+            <div>
+              <div class="item-name">2024 봄 MT 자료</div>
+              <div class="item-date">2024년 4월</div>
+            </div>
+          </div>
+          <a class="item-link" href="#" onclick="alert('링크를 연결해주세요')">열기 ↗</a>
+        </div>
+        <div class="archive-item">
+          <div class="item-left">
+            <div class="item-type meeting">💬</div>
+            <div>
+              <div class="item-name">2024 총회 자료</div>
+              <div class="item-date">2024년 1월</div>
+            </div>
+          </div>
+          <a class="item-link" href="#" onclick="alert('링크를 연결해주세요')">열기 ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2023 -->
+    <div class="year-block">
+      <div class="year-header" onclick="toggleYear(this)">
+        <div class="year-title">
+          <span class="year-num">2023</span>
+          <span class="year-desc">아카이브</span>
+        </div>
+        <span class="year-toggle">▲</span>
+      </div>
+      <div class="year-items">
+        <div class="archive-item">
+          <div class="item-left">
+            <div class="item-type doc">📄</div>
+            <div>
+              <div class="item-name">2023 겨울 MT 자료</div>
+              <div class="item-date">2023년 12월</div>
+            </div>
+          </div>
+          <a class="item-link" href="#" onclick="alert('링크를 연결해주세요')">열기 ↗</a>
+        </div>
+        <div class="archive-item">
+          <div class="item-left">
+            <div class="item-type photo">📸</div>
+            <div>
+              <div class="item-name">2023 전체 사진첩</div>
+              <div class="item-date">2023년 · 연간 사진 모음</div>
+            </div>
+          </div>
+          <a class="item-link" href="#" onclick="alert('링크를 연결해주세요')">열기 ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- OFFICERS -->
+<div id="officers" style="background: var(--bg);">
+<section>
+  <div class="section-label">OFFICERS</div>
+  <h2 class="section-title fade-in">임원단</h2>
+  <p class="section-sub fade-in">평안 CCC 나사렛을 섬기는 임원단을 소개합니다.</p>
+  <div class="officers-grid">
+    <div class="officer-card fade-in">
+      <div class="officer-avatar">👑</div>
+      <div class="officer-role">PRESIDENT</div>
+      <div class="officer-name">회장</div>
+    </div>
+    <div class="officer-card fade-in">
+      <div class="officer-avatar">🤝</div>
+      <div class="officer-role">VICE PRESIDENT</div>
+      <div class="officer-name">부회장</div>
+    </div>
+    <div class="officer-card fade-in">
+      <div class="officer-avatar">🎓</div>
+      <div class="officer-role">CAMPUS REP</div>
+      <div class="officer-name">캠퍼스 대표단</div>
+    </div>
+    <div class="officer-card fade-in">
+      <div class="officer-avatar">📋</div>
+      <div class="officer-role">SECRETARY</div>
+      <div class="officer-name">총무</div>
+    </div>
+    <div class="officer-card fade-in">
+      <div class="officer-avatar">💰</div>
+      <div class="officer-role">TREASURER</div>
+      <div class="officer-name">회계</div>
+    </div>
+  </div>
+  <p style="text-align:center; margin-top:1.5rem; font-size:0.8rem; color:var(--muted);">
+    임원 이름과 연락처는 네이버밴드 또는 카카오톡 단체방에서 확인하실 수 있습니다.
+  </p>
+</section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">나사렛 NAZARETH</div>
+  <div class="footer-desc">
+    평안 CCC 나사렛 공동체 · 평생순장, 캠퍼스, 그리고 나사렛<br>
+    <span style="color:var(--accent);">캠퍼스는 시작이고, 나사렛은 삶이며, 평생순장은 끝까지 사람을 세우는 제자도의 길이다.</span>
+  </div>
+  <div style="display:flex; justify-content:center; gap:16px; margin-top:1.5rem; flex-wrap:wrap;">
+    <a href="#" onclick="alert('카카오톡 링크')" style="font-size:0.8rem; color:var(--muted); text-decoration:none;">💬 카카오톡</a>
+    <a href="#" onclick="alert('네이버밴드 링크')" style="font-size:0.8rem; color:var(--muted); text-decoration:none;">🎵 네이버밴드</a>
+    <a href="#" onclick="alert('공유폴더 링크')" style="font-size:0.8rem; color:var(--muted); text-decoration:none;">📁 공유폴더</a>
+  </div>
+  <div class="footer-copy">© 2025 평안 CCC 나사렛 공동체. All rights reserved.</div>
+</footer>
+
+<script>
+// Password check
+function checkPw() {
+  const val = document.getElementById('pwInput').value.trim().toUpperCase();
+  if (val === 'PACCC') {
+    document.getElementById('archiveLock').style.display = 'none';
+    document.getElementById('archiveContent').style.display = 'block';
+    sessionStorage.setItem('naz_auth', '1');
+  } else {
+    document.getElementById('pwError').style.display = 'block';
+    document.getElementById('pwInput').style.borderColor = 'var(--accent2)';
+    setTimeout(() => {
+      document.getElementById('pwError').style.display = 'none';
+      document.getElementById('pwInput').style.borderColor = 'var(--border)';
+    }, 2500);
+  }
+}
+function lockArchive() {
+  document.getElementById('archiveLock').style.display = 'flex';
+  document.getElementById('archiveContent').style.display = 'none';
+  document.getElementById('pwInput').value = '';
+  sessionStorage.removeItem('naz_auth');
+}
+// Auto-restore if already authenticated this session
+if (sessionStorage.getItem('naz_auth') === '1') {
+  document.getElementById('archiveLock').style.display = 'none';
+  document.getElementById('archiveContent').style.display = 'block';
+}
+
+// Year accordion
+function toggleYear(header) {
+  const items = header.nextElementSibling;
+  const arrow = header.querySelector('.year-toggle');
+  items.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+// Hamburger (mobile) — simple scroll nav
+function toggleMenu() {
+  const ham = document.getElementById('ham');
+  const links = document.querySelector('.nav-links');
+  const cta = document.querySelector('.nav-cta');
+  if (!links) return;
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+    if (cta) cta.style.display = 'none';
+  } else {
+    links.style.cssText = 'display:flex; position:fixed; top:64px; left:0; right:0; background:rgba(10,10,15,0.97); flex-direction:column; padding:1.5rem 2rem; gap:1.2rem; border-bottom:1px solid var(--border);';
+    if (cta) cta.style.display = 'none';
+  }
+}
+
+// ── POPUP ──
+function closePopup() {
+  document.getElementById('popupOverlay').classList.remove('show');
+}
+function closeOnOverlay(e) {
+  if (e.target === document.getElementById('popupOverlay')) closePopup();
+}
+function closeToday() {
+  const expire = new Date();
+  expire.setHours(23,59,59,0);
+  document.cookie = 'naz_popup_hidden=1; expires=' + expire.toUTCString() + '; path=/';
+  closePopup();
+}
+// 오늘 하루 안 보기 쿠키 확인
+(function() {
+  if (document.cookie.split(';').some(c => c.trim().startsWith('naz_popup_hidden='))) {
+    document.getElementById('popupOverlay').classList.remove('show');
+  }
+})();
+
+// ── SCROLL FADE-IN ──
+// Scroll fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
