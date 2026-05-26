@@ -895,9 +895,14 @@
 
 <script>
 // Password check
-function checkPw() {
+async function checkPw() {
   const val = document.getElementById('pwInput').value.trim().toUpperCase();
-  if (val === 'PACCC') {
+  const msgBuffer = new TextEncoder().encode(val);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  const correct = '792ef0b54ddb3d236e85a6baa96ed9ad4db1e70bdb4dafd2f9456037cc8846a2';
+  if (hashHex === correct) {
     document.getElementById('archiveLock').style.display = 'none';
     document.getElementById('archiveContent').style.display = 'block';
     sessionStorage.setItem('naz_auth', '1');
