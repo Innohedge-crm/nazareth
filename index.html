@@ -892,7 +892,18 @@
   </div>
   <div class="footer-copy">© 2026 평안 CCC 나사렛. All rights reserved.</div>
   <div style="margin-top:1rem;">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=nazareth.paccc&left_color=%23555555&right_color=%237c6af7&left_text=방문자" alt="visitor badge"/>
+<div style="margin-top:1rem; color:var(--muted); font-size:0.8rem;">
+  👁 총 방문자 
+  <span id="gc-visits" style="color:var(--accent); font-weight:700;"></span> 명
+</div>
+
+<script>
+  fetch('https://jamesmoon.goatcounter.com/counter//.json')
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById('gc-visits').textContent = d.count;
+    });
+</script>
 </div>
 </footer>
 
