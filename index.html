@@ -893,25 +893,13 @@
   <div class="footer-copy">© 2026 평안 CCC 나사렛. All rights reserved.</div>
   <div style="margin-top:1rem;">
 <div style="margin-top:1rem; color:var(--muted); font-size:0.8rem;">
-  👁 총 방문자 
-  <span id="gc-visits" style="color:var(--accent); font-weight:700;">-</span> 명
+  👁 총 방문자
+  <span id="gc-visits" style="color:var(--accent); font-weight:700;">
+    <img src="https://jamesmoon.goatcounter.com/counter/TOTAL.svg?style=flat&color=%237c6af7">
+  </span>
 </div>
 
-<script>
-function updateCount() {
-    fetch('https://jamesmoon.goatcounter.com/counter/TOTAL.json?t=' + Date.now())
-      .then(r => r.json())
-      .then(d => {
-        document.getElementById('gc-visits').textContent = d.count_unique;
-      })
-      .catch(e => console.log('counter error:', e));
-  }
-  window.addEventListener('load', function() {
-    updateCount();
-    setInterval(updateCount, 300000); // 5분마다 갱신
-  });
-</script>
-</div>
+  </div>
 </footer>
 
 <script>
