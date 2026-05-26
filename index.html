@@ -894,15 +894,18 @@
   <div style="margin-top:1rem;">
 <div style="margin-top:1rem; color:var(--muted); font-size:0.8rem;">
   👁 총 방문자 
-  <span id="gc-visits" style="color:var(--accent); font-weight:700;"></span> 명
+  <span id="gc-visits" style="color:var(--accent); font-weight:700;">-</span> 명
 </div>
 
 <script>
-  fetch('https://jamesmoon.goatcounter.com/counter/%2F.json')
-    .then(r => r.json())
-    .then(d => {
-      document.getElementById('gc-visits').textContent = d.count;
-    });
+  window.addEventListener('load', function() {
+    fetch('https://jamesmoon.goatcounter.com/counter/%2F.json')
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById('gc-visits').textContent = d.count;
+      })
+      .catch(e => console.log('counter error:', e));
+  });
 </script>
 </div>
 </footer>
