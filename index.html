@@ -898,7 +898,7 @@
 </div>
 
 <script>
-  fetch('https://jamesmoon.goatcounter.com/counter//.json')
+  fetch('https://jamesmoon.goatcounter.com/counter/%2F.json')
     .then(r => r.json())
     .then(d => {
       document.getElementById('gc-visits').textContent = d.count;
