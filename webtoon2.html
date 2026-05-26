@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>평안나사렛 웹툰2 | 우리는 왜 계속 모이는가?</title>
+<meta name="description" content="30년의 지속, 15년의 MT, 그리고 평생순장 공동체 — 평안 CCC 나사렛이 계속 모이는 이유를 10장으로 정리했습니다.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #12121a;
+    --card: #16161f;
+    --accent: #7c6af7;
+    --accent2: #f76a8a;
+    --accent3: #6af7c8;
+    --text: #f0f0f8;
+    --muted: #8888aa;
+    --border: rgba(124,106,247,0.2);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    min-height: 100vh;
+  }
+
+  header {
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .header-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem; letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .header-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+  .header-right { display: flex; gap: 8px; flex-wrap: wrap; }
+  .back-btn {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--muted); padding: 8px 18px; border-radius: 100px;
+    font-size: 0.8rem; cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-decoration: none; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .back-btn.webtoon1 {
+    background: rgba(124,106,247,0.1);
+    border-color: rgba(124,106,247,0.4);
+    color: var(--accent);
+  }
+
+  .page-counter {
+    text-align: center; padding: 1.5rem;
+    font-size: 0.8rem; color: var(--muted); letter-spacing: 1px;
+  }
+  .page-counter span {
+    background: rgba(124,106,247,0.15); border: 1px solid var(--border);
+    padding: 4px 14px; border-radius: 100px;
+    color: var(--accent); font-weight: 600;
+  }
+
+  /* 시리즈 배지 */
+  .series-badge {
+    text-align: center; margin-bottom: 0.5rem;
+  }
+  .series-badge span {
+    background: rgba(247,106,138,0.15); border: 1px solid rgba(247,106,138,0.3);
+    color: var(--accent2); font-size: 0.72rem; font-weight: 700;
+    padding: 4px 14px; border-radius: 100px; letter-spacing: 1px;
+  }
+
+  .viewer {
+    max-width: 700px; margin: 0 auto; padding: 0 1rem 4rem;
+  }
+  .page-wrap {
+    margin-bottom: 2rem; border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    position: relative;
+  }
+  .page-wrap img {
+    width: 100%; display: block;
+  }
+  .page-num {
+    position: absolute; top: 16px; right: 16px;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(10px);
+    color: #fff; font-size: 0.75rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 100px; letter-spacing: 1px;
+  }
+
+  .bottom-nav {
+    text-align: center; padding: 2rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+  .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; border: none; padding: 14px 32px; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-decoration: none; display: inline-block;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border); padding: 14px 32px; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 500; cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .bottom-desc { font-size: 0.8rem; color: var(--muted); margin-top: 1rem; line-height: 1.8; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-logo">평안나사렛 웹툰 2</div>
+    <div class="header-sub">우리는 왜 계속 모이는가? · 10장</div>
+  </div>
+  <div class="header-right">
+    <a class="back-btn webtoon1" href="webtoon.html">📖 웹툰1 보기</a>
+    <a class="back-btn" href="https://www.나사렛.com">← 홈으로</a>
+  </div>
+</header>
+
+<div class="series-badge">
+  <span>✦ SERIES 2 / 2 ✦</span>
+</div>
+
+<div class="page-counter">
+  총 <span>10 페이지</span> · 스크롤해서 보세요 👇
+</div>
+
+<div class="viewer">
+
+  <div class="page-wrap">
+    <img src="https://raw.githubusercontent.com/Innohedge-crm/nazareth/main/KakaoTalk_20260526_144938859.png" alt="웹툰2 1페이지" loading="lazy">
+    <div class="page-num">1 / 10</div>
+  </div>
+
+  <div class="page-wrap">
+    <img src="https://raw.githubusercontent.com/Innohedge-crm/nazareth/main/KakaoTalk_20260526_144938859_01.png" alt="웹툰2 2페이지" loading="lazy">
+    <div class="page-num">2 / 10</div>
+  </div>
+
+  <div class="page-wrap">
+    <img src="https://raw.githubusercontent.com/Innohedge-crm/nazareth/main/KakaoTalk_20260526_144938859_02.png" alt="웹툰2 3페이지" loading="lazy">
+    <div class="page-num">3 / 10</div>
+  </div>
+
+  <div class="page-wrap">
+    <img src="https://raw.githubusercontent.com/Innohedge-crm/nazareth/main/KakaoTalk_20260526_144938859_03.png" alt="웹툰2 4페이지" loading="lazy">
+    <div class="page-num">4 / 10</div>
+  </div>
+
+  <div class="page-wrap">
+    <img src="https://raw.githubusercontent.com/Innohedge-crm/nazareth/main/KakaoTalk_20260526_144938859_04.png" alt="웹툰2 5페이지" loading="lazy">
+    <div class="page-num">5 / 10</div>
+  </div>
+
+  <div class="page-wrap">
+    <img src="https://raw.githubusercontent.com/Innohedge-crm/nazareth/main/KakaoTalk_20260526_144938859_05.png" alt="웹툰2 6페이지" loading="lazy">
+    <div class="page-num">6 / 10</div>
+  </div>
+
+  <div class="page-wrap">
+    <img src="https://raw.githubusercontent.com/Innohedge-crm/nazareth/main/KakaoTalk_20260526_144938859_06.png" alt="웹툰2 7페이지" loading="lazy">
+    <div class="page-num">7 / 10</div>
+  </div>
+
+  <div class="page-wrap">
+    <img src="https://raw.githubusercontent.com/Innohedge-crm/nazareth/main/KakaoTalk_20260526_144938859_07.png" alt="웹툰2 8페이지" loading="lazy">
+    <div class="page-num">8 / 10</div>
+  </div>
+
+  <div class="page-wrap">
+    <img src="https://raw.githubusercontent.com/Innohedge-crm/nazareth/main/KakaoTalk_20260526_144938859_08.png" alt="웹툰2 9페이지" loading="lazy">
+    <div class="page-num">9 / 10</div>
+  </div>
+
+  <div class="page-wrap">
+    <img src="https://raw.githubusercontent.com/Innohedge-crm/nazareth/main/KakaoTalk_20260526_144938859_09.png" alt="웹툰2 10페이지" loading="lazy">
+    <div class="page-num">10 / 10</div>
+  </div>
+
+</div>
+
+<div class="bottom-nav">
+  <div class="btn-row">
+    <a class="btn-outline" href="webtoon.html">📖 웹툰1 보기</a>
+    <a class="btn-primary" href="https://www.나사렛.com">🏠 홈으로 돌아가기</a>
+  </div>
+  <div class="bottom-desc">
+    평안 CCC 나사렛 공동체 · 30년의 지속, 15년의 MT, 그리고 평생순장<br>
+    <span style="color:var(--accent);">그래서 우리는 계속 모인다.</span>
+  </div>
+</div>
+
+</body>
+</html>
