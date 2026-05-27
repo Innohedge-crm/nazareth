@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>평안나사렛 방명록</title>
+<meta name="description" content="평안 CCC 나사렛 공동체 방명록입니다.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #12121a;
+    --card: #16161f;
+    --accent: #7c6af7;
+    --accent2: #f76a8a;
+    --text: #f0f0f8;
+    --muted: #8888aa;
+    --border: rgba(124,106,247,0.2);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    min-height: 100vh;
+  }
+  header {
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .header-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem; letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .header-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+  .back-btn {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--muted); padding: 8px 18px; border-radius: 100px;
+    font-size: 0.8rem; cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-decoration: none; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .hero {
+    text-align: center; padding: 4rem 2rem 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+    color: var(--accent); margin-bottom: 0.75rem;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: 3px;
+  }
+  .hero-sub { font-size: 0.9rem; color: var(--muted); margin-top: 0.75rem; }
+  .form-wrap {
+    max-width: 800px; margin: 2rem auto; padding: 0 1rem 4rem;
+  }
+  .form-container {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .form-container iframe {
+    width: 100%;
+    height: 700px;
+    border: none;
+    display: block;
+  }
+  .bottom-nav {
+    text-align: center; padding: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; border: none; padding: 14px 32px; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-decoration: none; display: inline-block;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-logo">평안나사렛 방명록</div>
+    <div class="header-sub">평안 CCC 나사렛 공동체</div>
+  </div>
+  <a class="back-btn" href="https://www.나사렛.com">← 홈으로</a>
+</header>
+
+<div class="hero">
+  <div class="hero-label">✦ GUESTBOOK ✦</div>
+  <div class="hero-title">방명록</div>
+  <div class="hero-sub">나사렛 공동체에 한 마디 남겨주세요 😊</div>
+</div>
+
+<div class="form-wrap">
+  <div class="form-container">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScK1KDyTWrHU756KjRYWHSnxectlMJ3jri5LRNjdkCK9OxLfA/viewform?embedded=true">
+      로딩 중...
+    </iframe>
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <a class="btn-primary" href="https://www.나사렛.com">🏠 홈으로 돌아가기</a>
+</div>
+
+</body>
+</html>
