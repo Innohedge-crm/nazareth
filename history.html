@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>평안나사렛 History | 행사 기록</title>
+<meta name="description" content="평안 CCC 나사렛 공동체의 행사 기록과 역사입니다.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #12121a;
+    --card: #16161f;
+    --accent: #7c6af7;
+    --accent2: #f76a8a;
+    --accent3: #6af7c8;
+    --text: #f0f0f8;
+    --muted: #8888aa;
+    --border: rgba(124,106,247,0.2);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* 헤더 */
+  header {
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .header-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem; letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .header-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+  .back-btn {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--muted); padding: 8px 18px; border-radius: 100px;
+    font-size: 0.8rem; cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-decoration: none; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* 히어로 */
+  .history-hero {
+    text-align: center; padding: 4rem 2rem 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .history-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .history-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: 3px;
+  }
+  .history-sub { font-size: 0.9rem; color: var(--muted); margin-top: 0.75rem; }
+
+  /* 타임라인 */
+  .timeline-wrap {
+    max-width: 800px; margin: 0 auto; padding: 3rem 2rem 6rem;
+  }
+
+  /* 연도 그룹 */
+  .year-group { margin-bottom: 3rem; }
+  .year-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem; letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* 타임라인 아이템 */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: all 0.3s;
+  }
+  .timeline-item:hover {
+    border-color: rgba(124,106,247,0.4);
+    transform: translateX(4px);
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -2.45rem; top: 1.5rem;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 8px var(--accent);
+  }
+  .item-header {
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 0.5rem;
+  }
+  .item-date {
+    font-size: 0.75rem; color: var(--muted); letter-spacing: 1px;
+  }
+  .item-type {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px;
+    padding: 3px 10px; border-radius: 100px;
+  }
+  .item-type.MT { background: rgba(124,106,247,0.15); color: var(--accent); border: 1px solid rgba(124,106,247,0.3); }
+  .item-type.수련회 { background: rgba(106,247,200,0.15); color: var(--accent3); border: 1px solid rgba(106,247,200,0.3); }
+  .item-type.총회 { background: rgba(247,106,138,0.15); color: var(--accent2); border: 1px solid rgba(247,106,138,0.3); }
+  .item-type.격려방문 { background: rgba(255,200,80,0.15); color: #ffc850; border: 1px solid rgba(255,200,80,0.3); }
+  .item-type.기타 { background: rgba(136,136,170,0.15); color: var(--muted); border: 1px solid rgba(136,136,170,0.3); }
+  .item-title {
+    font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem;
+  }
+  .item-desc {
+    font-size: 0.85rem; color: var(--muted); line-height: 1.6;
+  }
+
+  /* 로딩 */
+  .loading {
+    text-align: center; padding: 4rem;
+    color: var(--muted); font-size: 0.9rem;
+  }
+
+  /* 하단 */
+  .bottom-nav {
+    text-align: center; padding: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; border: none; padding: 14px 32px; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-decoration: none; display: inline-block;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-logo">평안나사렛 HISTORY</div>
+    <div class="header-sub">평안 CCC 나사렛 공동체 행사 기록</div>
+  </div>
+  <a class="back-btn" href="https://www.나사렛.com">← 홈으로</a>
+</header>
+
+<div class="history-hero">
+  <div class="history-label">✦ HISTORY ✦</div>
+  <div class="history-title">나사렛의 기록</div>
+  <div class="history-sub">함께 걸어온 평안 CCC 나사렛 공동체의 발자취</div>
+</div>
+
+<div class="timeline-wrap">
+  <div id="timeline-container" class="loading">
+    불러오는 중... ⏳
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <a class="btn-primary" href="https://www.나사렛.com">🏠 홈으로 돌아가기</a>
+</div>
+
+<script>
+fetch('history.json?t=' + Date.now())
+  .then(r => r.json())
+  .then(data => {
+    const container = document.getElementById('timeline-container');
+    container.innerHTML = '';
+    container.className = '';
+
+    // 연도별 그룹핑
+    const groups = {};
+    data.forEach(item => {
+      if (!groups[item.year]) groups[item.year] = [];
+      groups[item.year].push(item);
+    });
+
+    // 연도 내림차순 정렬
+    const years = Object.keys(groups).sort((a, b) => b - a);
+
+    years.forEach(year => {
+      const yearDiv = document.createElement('div');
+      yearDiv.className = 'year-group';
+      yearDiv.innerHTML = `<div class="year-label">${year}</div>`;
+
+      const timeline = document.createElement('div');
+      timeline.className = 'timeline';
+
+      // 월 내림차순 정렬
+      groups[year].sort((a, b) => b.month - a.month);
+
+      groups[year].forEach(item => {
+        const el = document.createElement('div');
+        el.className = 'timeline-item';
+        el.innerHTML = `
+          <div class="item-header">
+            <span class="item-date">📅 ${item.year}.${item.month}${item.day ? '.' + item.day : ''}</span>
+            <span class="item-type ${item.type}">${item.type}</span>
+          </div>
+          <div class="item-title">${item.title}</div>
+          <div class="item-desc">${item.desc}</div>
+        `;
+        timeline.appendChild(el);
+      });
+
+      yearDiv.appendChild(timeline);
+      container.appendChild(yearDiv);
+    });
+  })
+  .catch(e => {
+    document.getElementById('timeline-container').innerHTML =
+      '<div style="text-align:center; color:var(--muted); padding:3rem;">데이터를 불러올 수 없습니다.</div>';
+  });
+</script>
+
+</body>
+</html>
