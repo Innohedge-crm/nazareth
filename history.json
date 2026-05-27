@@ -1,10 +1,33 @@
 [
   {
     "year": "2026",
+    "month": "06",
+    "day": "23~27",
+    "title": "CCC 전국 여름수련회",
+    "desc": "캠퍼스 학부생 격려방문",
+    "type": "수련회"
+  }
+]
+
+
+[
+  {
+    "year": "2026",
     "month": "05",
     "day": "24~25",
     "title": "나사렛 봄 MT",
-    "desc": "평안지구 CCC 30주년 기념 1박2일 봄 MT",
+    "desc": "평안지구 CCC 30주년 기념 1박2일 봄 MT(46명 참석)",
     "type": "MT"
+  }
+]
+
+[
+  {
+    "year": "2025",
+    "month": "00",
+    "day": "00",
+    "title": "It will be updated soon",
+    "desc": "   ",
+    "type": "   "
   }
 ]
