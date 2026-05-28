@@ -894,12 +894,19 @@
   </div>
   <div class="footer-copy">© 2026 평안 CCC 나사렛. All rights reserved.</div>
   <div style="margin-top:1rem;">
-<div style="margin-top:1rem; color:var(--muted); font-size:0.8rem;">
-  👁 총 방문자
-  <span id="gc-visits" style="color:var(--accent); font-weight:700;">
-    <img src="https://jamesmoon.goatcounter.com/counter/TOTAL.svg?style=flat&color=%237c6af7">
-  </span>
+<div style="margin-top:1.2rem; display:inline-flex; align-items:center; gap:10px; background:rgba(124,106,247,0.1); border:1px solid rgba(124,106,247,0.25); padding:6px 16px; border-radius:100px;">
+  <span style="font-size:0.75rem;">👁</span>
+  <span style="font-size:0.72rem; color:var(--muted); letter-spacing:0.5px;">총 방문자</span>
+  <span id="gc-visits" style="font-size:0.85rem; font-weight:700; background:linear-gradient(135deg,#7c6af7,#f76a8a); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">-</span>
+  <span style="font-size:0.72rem; color:var(--muted);">명</span>
 </div>
+<script>
+  fetch('https://jamesmoon.goatcounter.com/counter/TOTAL.json?t=' + Date.now())
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById('gc-visits').textContent = d.count;
+    });
+</script>
 
   </div>
 </footer>
