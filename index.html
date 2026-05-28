@@ -420,102 +420,7 @@
   }
   .popup-x:hover { background: rgba(0,0,0,0.7); }
 
-  /* ── POPUP ── */
-  .popup-overlay {
-    display: none;
-    position: fixed; inset: 0; z-index: 9999;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(6px);
-    align-items: center; justify-content: center;
-    padding: 1rem;
-    animation: fadeIn 0.3s ease;
-  }
-  .popup-overlay.show { display: flex; }
-  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-
-  .popup-box {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    width: 100%; max-width: 420px;
-    overflow: hidden;
-    position: relative;
-    animation: popUp 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
-  }
-  @keyframes popUp {
-    from { opacity:0; transform: scale(0.85) translateY(20px); }
-    to   { opacity:1; transform: scale(1) translateY(0); }
-  }
-
-  /* ✏️ 수정 포인트 1: 팝업 이미지 영역 */
-  .popup-image {
-    width: 100%; aspect-ratio: 4/3;
-    object-fit: cover;
-    display: block;
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-  }
-  /* 이미지 없을 때 대체 배너 */
-  .popup-banner {
-    width: 100%; aspect-ratio: 4/3;
-    background: linear-gradient(135deg, rgba(124,106,247,0.3), rgba(247,106,138,0.3));
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 12px;
-    text-align: center; padding: 2rem;
-  }
-  .popup-banner-emoji { font-size: 3.5rem; }
-  .popup-banner-tag {
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
-    color: var(--accent); text-transform: uppercase;
-  }
-  /* ✏️ 수정 포인트 2: 팝업 제목 */
-  .popup-banner-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.2rem; line-height: 1.1;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
-  /* ✏️ 수정 포인트 3: 팝업 날짜 */
-  .popup-banner-date {
-    font-size: 0.85rem; color: var(--muted);
-  }
-
-  .popup-body { padding: 1.5rem; }
-  /* ✏️ 수정 포인트 4: 팝업 본문 제목 */
-  .popup-title {
-    font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem;
-  }
-  /* ✏️ 수정 포인트 5: 팝업 본문 설명 */
-  .popup-desc {
-    font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem;
-  }
-  .popup-actions { display: flex; gap: 8px; align-items: center; }
-  /* ✏️ 수정 포인트 6: 팝업 버튼 텍스트/링크 */
-  .popup-btn {
-    flex: 1;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: #fff; border: none; padding: 12px 20px; border-radius: 100px;
-    font-size: 0.875rem; font-weight: 700; cursor: pointer;
-    font-family: 'Noto Sans KR', sans-serif; transition: opacity 0.2s;
-    text-decoration: none; text-align: center; display: block;
-  }
-  .popup-btn:hover { opacity: 0.85; }
-  .popup-close-text {
-    font-size: 0.75rem; color: var(--muted); cursor: pointer;
-    white-space: nowrap; padding: 4px 8px;
-    transition: color 0.2s;
-  }
-  .popup-close-text:hover { color: var(--text); }
-  .popup-x {
-    position: absolute; top: 12px; right: 14px;
-    width: 32px; height: 32px; border-radius: 50%;
-    background: rgba(0,0,0,0.45); border: none;
-    color: #fff; font-size: 1rem; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s; z-index: 10;
-  }
-  .popup-x:hover { background: rgba(0,0,0,0.7); }
-
-/* ── FOOTER ── */
+  /* ── FOOTER ── */
   footer {
     background: var(--bg);
     border-top: 1px solid var(--border);
@@ -582,7 +487,7 @@
         자세한 일정과 신청은 아래 버튼을 눌러 확인해 주세요. 🙏
       </div>
       <div class="popup-actions">
-        <a class="popup-btn" href="#" target="_blank"; return false;">KCCC.ORG 에서 확인 →</a>
+        <a class="popup-btn" href="https://www.kccc.org/connect" target="_blank">자세히 보기 →</a>
         <span class="popup-close-text" onclick="closeToday()">오늘 하루 안 보기</span>
       </div>
     </div>
@@ -607,38 +512,7 @@
   </div>
 </nav>
 
-<!-- ════════════════════════════════════════
-     팝업 설정 — 여기만 수정하면 됩니다!
-     ════════════════════════════════════════ -->
-<div class="popup-overlay show" id="popupOverlay" onclick="closeOnOverlay(event)">
-  <div class="popup-box" id="popupBox">
-    <button class="popup-x" onclick="closePopup()">✕</button>
 
-    <!-- [방식 A] 이미지 팜플렛 사용 시: 아래 div.popup-banner 대신 img 태그로 교체
-         <img class="popup-image" src="팜플렛이미지URL" alt="행사 팜플렛"> -->
-
-    <!-- [방식 B] 텍스트 배너 (기본) -->
-    <div class="popup-banner">
-      <div class="popup-banner-emoji">⛺</div>
-      <div class="popup-banner-tag">✦ 2025 여름 행사 ✦</div>
-      <div class="popup-banner-title">2025 여름<br>수련회</div>
-      <div class="popup-banner-date">📅 2025년 7월 25일 (금) – 27일 (일)<br>📍 장소 미정</div>
-    </div>
-
-    <div class="popup-body">
-      <div class="popup-title">2025 여름수련회 안내</div>
-      <div class="popup-desc">
-        평안 CCC 나사렛 공동체 2025 여름수련회에 함께해요!<br>
-        자세한 일정과 신청은 아래 버튼을 눌러 확인해 주세요. 🙏
-      </div>
-      <div class="popup-actions">
-        <a class="popup-btn" href="#" onclick="alert('신청 링크를 연결하세요'); return false;">자세히 보기 →</a>
-        <span class="popup-close-text" onclick="closeToday()">오늘 하루 안 보기</span>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- ════════════════════════════════════════ -->
 
 <!-- HERO -->
 <div id="home" style="padding-top:64px;">
@@ -1061,26 +935,6 @@ function toggleMenu() {
     if (cta) cta.style.display = 'none';
   }
 }
-
-// ── POPUP ──
-function closePopup() {
-  document.getElementById('popupOverlay').classList.remove('show');
-}
-function closeOnOverlay(e) {
-  if (e.target === document.getElementById('popupOverlay')) closePopup();
-}
-function closeToday() {
-  const expire = new Date();
-  expire.setHours(23,59,59,0);
-  document.cookie = 'naz_popup_hidden=1; expires=' + expire.toUTCString() + '; path=/';
-  closePopup();
-}
-// 오늘 하루 안 보기 쿠키 확인
-(function() {
-  if (document.cookie.split(';').some(c => c.trim().startsWith('naz_popup_hidden='))) {
-    document.getElementById('popupOverlay').classList.remove('show');
-  }
-})();
 
 // ── POPUP ──
 function closePopup() {
