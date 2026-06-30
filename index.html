@@ -538,33 +538,7 @@
     <button class="btn-primary" onclick="document.getElementById('links').scrollIntoView({behavior:'smooth'})">💬 카카오톡 참여하기</button>
     <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">나사렛이란? →</button>
   </div>
-  <div style="margin-bottom:2rem; margin-top:1.5rem; animation: fadeUp 0.6s 0.35s ease both;">
-  <div id="dday-banner" style="display:inline-flex; align-items:center; gap:8px; background:rgba(247,106,138,0.1); border:1px solid rgba(247,106,138,0.3); padding:7px 16px; border-radius:100px; flex-wrap:nowrap; justify-content:center;">
-    <span style="font-size:0.75rem;">⛺</span>
-    <span style="font-size:0.72rem; color:var(--muted); white-space:nowrap;">CCC 여름수련회</span>
-    <span style="width:1px; height:12px; background:rgba(247,106,138,0.3);"></span>
-    <span style="font-size:0.72rem; color:var(--muted); white-space:nowrap;">2026.06.23</span>
-    <span style="width:1px; height:12px; background:rgba(247,106,138,0.3);"></span>
-    <span style="font-size:0.72rem; color:var(--muted);">D-day</span>
-    <span id="dday-count" style="font-size:1rem; font-weight:900; background:linear-gradient(135deg,#f76a8a,#7c6af7); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">-</span>
-  </div>
-</div>
 
-<script>
-  (function() {
-    const target = new Date('2026-06-23');
-    const today = new Date();
-    today.setHours(0,0,0,0);
-    const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
-    const el = document.getElementById('dday-count');
-    if (diff > 0) el.textContent = diff;
-    else if (diff === 0) {
-      el.textContent = 'DAY!';
-      document.querySelector('.dday-label').textContent = 'D-day';
-    }
-    else el.closest('#dday-banner').style.display = 'none';
-  })();
-</script>
   <div class="stats-bar">
     <div class="stat">
       <div class="stat-num">500+</div>
