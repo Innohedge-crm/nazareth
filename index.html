@@ -181,6 +181,24 @@
   .about-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
   .about-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.7; }
 
+  /* ── ABOUT · ORIGIN ── */
+  .origin-box {
+    margin-top: 3rem; padding: 2.5rem 2rem;
+    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+  }
+  .origin-box h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 1rem; }
+  .origin-box > p { font-size: 0.9rem; color: var(--muted); line-height: 1.85; }
+  .origin-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .origin-step { border-left: 2px solid var(--accent); padding-left: 1rem; }
+  .origin-year {
+    font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 1;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .origin-step h4 { font-size: 0.95rem; font-weight: 700; margin: 0.4rem 0 0.3rem; }
+  .origin-step p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+  @media (max-width: 700px) { .origin-steps { grid-template-columns: 1fr; } }
+
   /* ── COMMUNITY LINKS ── */
   #links { background: var(--bg2); }
   #links > section { max-width: 1100px; }
@@ -487,38 +505,6 @@
   </div>
 </nav>
 
-<!-- ════════════════════════════════════════
-     팝업 설정 — 여기만 수정하면 됩니다!
-     ════════════════════════════════════════ -->
-<div class="popup-overlay" id="popupOverlay" onclick="closeOnOverlay(event)">
-  <div class="popup-box" id="popupBox">
-    <button class="popup-x" onclick="closePopup()">✕</button>
-
-    <!-- [방식 A] 이미지 팜플렛 사용 시: 아래 div.popup-banner 대신 img 태그로 교체
-         <img class="popup-image" src="https://github.com/Innohedge-crm/nazareth/blob/main/SUMMER%20CONFERENCE%202026.jpg" alt="행사 팜플렛"> -->
-
-    <!-- [방식 B] 텍스트 배너 (기본) -->
-    <div class="popup-banner">
-      <div class="popup-banner-emoji">🎂</div>
-      <div class="popup-banner-tag">✦ 2026 평안지구 30주년 홈커밍 ✦</div>
-      <div class="popup-banner-title">2026 홈커밍<br>30주년</div>
-      <div class="popup-banner-date">📅 2026년 11월 7일<br>📍 평택안성 </div>
-    </div>
-
-    <div class="popup-body">
-      <div class="popup-title">2026 평안지구 30주년 홈커밍</div>
-      <div class="popup-desc">
-        평안 CCC 30주년 홈커밍에 여러분을 초대합니다!<br>
-        자세한 일정과 신청은 아래 버튼을 눌러 확인해 주세요. 🙏
-      </div>
-      <div class="popup-actions">
-        <a class="popup-btn" href="#" target="_blank">자세히 알아보기! →</a>
-        <span class="popup-close-text" onclick="closeToday()">오늘 하루 안 보기</span>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- ════════════════════════════════════════ -->
 
 <!-- HERO -->
 <div id="home" style="padding-top:64px;">
@@ -588,6 +574,45 @@
       <p>캠퍼스는 시작이고, 나사렛은 삶이며, 평생순장은 끝까지 사람을 세우는 제자도의 길입니다. 졸업이 끝이 아닌 새로운 파송의 시작입니다.</p>
     </div>
   </div>
+
+  <!-- 평안CCC의 시작 -->
+  <div class="origin-box fade-in">
+    <div class="section-label">OUR ROOTS</div>
+    <h3>평안CCC의 시작</h3>
+    <p>평안CCC의 시작은 조금 특별합니다. 대부분의 지구가 본부에서 간사를 파견하며 개척된 것과 달리, 평안CCC는 학생들이 먼저 CCC를 찾아가 도움을 요청했고, 각 캠퍼스에서 따로 시작된 순모임이 하나로 모이며 세워졌습니다.<br><br>
+    1991년, 안성산업대학교(현 한경국립대) 91학번 임채식 순장은 교내 기독교 동아리를 대표해 수원지구 윤철 간사님을 찾아가 간사 파견을 요청했습니다. 이 요청이 용인지구 이승제 간사님과 연결되면서 안성산업대에서 처음으로 CCC 사역이 시작되었습니다.<br><br>
+    비슷한 시기, 중앙대 안성캠퍼스에서도 또 하나의 씨앗이 자라고 있었습니다. 1992년 중앙대 92학번 한권수 순장은 청주지구 우두연 간사님과 순모임을 하며 대전지구 채플 등에 참여해 믿음을 이어갔고, 1993년 93학번 임수연·김성미 순원과 함께 중앙대에서 첫 순사역을 시작했습니다.<br><br>
+    그리고 바로 그해, 안성산업대에서도 CCC 모임이 이어지고 있다는 사실을 알게 되었습니다. 서로 모른 채 각자 시작된 두 캠퍼스의 모임이 연합하면서 <strong style="color:var(--text);">안성지구</strong> 사역이 세워졌고, 1996년 3월 평택과 안성의 캠퍼스를 아우르는 <strong style="color:var(--text);">평택안성지구, 곧 '평안지구'</strong>로 분립 개척되었습니다.<br><br>
+    간사 파견이 아니라 학생들의 요청과 자발적인 순모임에서 시작된, CCC 안에서도 이례적인 개척 이야기입니다. 그때 캠퍼스를 누비던 순장들이 지금은 각자의 일상, 곧 나사렛에서 평생순장의 길을 걷고 있습니다.</p>
+    <div class="origin-steps">
+      <div class="origin-step">
+        <div class="origin-year">1991</div>
+        <h4>안성산업대 사역 시작</h4>
+        <p>학생의 간사 파견 요청으로 용인지구 이승제 간사님과 연결, 첫 CCC 사역</p>
+      </div>
+      <div class="origin-step">
+        <div class="origin-year">1992</div>
+        <h4>중앙대 순모임 시작</h4>
+        <p>청주지구 간사님과의 순모임, 대전지구 채플로 이어간 믿음</p>
+      </div>
+      <div class="origin-step">
+        <div class="origin-year">1993</div>
+        <h4>두 캠퍼스 연합</h4>
+        <p>중앙대 첫 순사역, 안성산업대와 하나 되어 안성지구 사역으로</p>
+      </div>
+      <div class="origin-step">
+        <div class="origin-year">1996</div>
+        <h4>평안지구 분립 개척</h4>
+        <p>3월, 평택·안성을 아우르는 평택안성지구 출범</p>
+      </div>
+      <div class="origin-step">
+        <div class="origin-year">2026</div>
+        <h4>30주년 홈커밍데이</h4>
+        <p>11월 7일, 30년의 은혜를 기억하며 함께 모임</p>
+      </div>
+    </div>
+  </div>
+
 <div style="text-align:center; margin-top:2.5rem; display:flex; flex-direction:column; align-items:center; gap:12px;">
   <a href="webtoon.html" target="_blank" class="btn-primary">
     ✨ Webtoon1 · 평생순장, 캠퍼스, 그리고 나사렛
@@ -973,26 +998,6 @@ function toggleMenu() {
     if (cta) cta.style.display = 'none';
   }
 }
-
-// ── POPUP ──
-function closePopup() {
-  document.getElementById('popupOverlay').classList.remove('show');
-}
-function closeOnOverlay(e) {
-  if (e.target === document.getElementById('popupOverlay')) closePopup();
-}
-function closeToday() {
-  const expire = new Date();
-  expire.setHours(23,59,59,0);
-  document.cookie = 'naz_popup_hidden=1; expires=' + expire.toUTCString() + '; path=/';
-  closePopup();
-}
-// 오늘 하루 안 보기 쿠키 확인
-(function() {
-  if (document.cookie.split(';').some(c => c.trim().startsWith('naz_popup_hidden='))) {
-    document.getElementById('popupOverlay').classList.remove('show');
-  }
-})();
 
 // ── SCROLL FADE-IN ──
 // Scroll fade-in
